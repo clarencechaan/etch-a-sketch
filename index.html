@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<style>
+    .container {
+        display: flex;
+    }
+
+    button {
+        display: flex;
+        flex-grow: 1;
+    }
+</style>
+<button>Clear Grid</button>
+<div class="container">
+</div>
+
+
+<script>
+    const container = document.querySelector(".container");
+
+    for (let i = 0; i < 16; i++) {
+
+        const column = document.createElement("div");
+        container.appendChild(column);
+
+        for (let j = 0; j < 16; j++) {
+            const div = document.createElement("div");
+            div.style.backgroundColor = "lightgrey";
+            div.style.height = "60px";
+            div.style.width = "60px";
+            div.addEventListener('mouseover', function () {
+                div.style.backgroundColor = "grey";
+            })
+            column.appendChild(div);
+        }
+    }
+</script>
+</body>
+</html>
