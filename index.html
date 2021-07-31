@@ -8,13 +8,8 @@
     .container {
         display: flex;
     }
-
-    button {
-        display: flex;
-        flex-grow: 1;
-    }
 </style>
-<button>Clear Grid</button>
+<button id="clear">Clear Grid</button>
 <div class="container">
 </div>
 
@@ -22,22 +17,48 @@
 <script>
     const container = document.querySelector(".container");
 
-    for (let i = 0; i < 16; i++) {
 
-        const column = document.createElement("div");
-        container.appendChild(column);
+    function drawGrid(x) {
+        for (let i = 0; i < x; i++) {
 
-        for (let j = 0; j < 16; j++) {
-            const div = document.createElement("div");
-            div.style.backgroundColor = "lightgrey";
-            div.style.height = "60px";
-            div.style.width = "60px";
-            div.addEventListener('mouseover', function () {
-                div.style.backgroundColor = "grey";
-            })
-            column.appendChild(div);
+            const column = document.createElement("div");
+            container.appendChild(column);
+
+            for (let j = 0; j < x; j++) {
+                const div = document.createElement("div");
+                div.style.backgroundColor = "lightgrey";
+                div.style.height = `${960/x}px`;
+                div.style.width = `${960/x}px`;
+                div.className = 'cell'
+                div.addEventListener('mouseover', function () {
+                    div.style.backgroundColor = "grey";
+                })
+                column.appendChild(div);
+            }
         }
     }
+
+    function clearGrid() {
+        console.log("Grid cleared.");
+        const container = document.querySelector(".container");
+        console.log(container);
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        }
+
+        let x = prompt("Enter grid sidelength <= 100.");
+        while (x > 100) {
+            x = prompt("Enter grid sidelength <= 100.");
+        }
+        drawGrid(x);
+    }
+
+    drawGrid(16);
+
+
+    const btn = document.querySelector("#clear");
+    btn.addEventListener('click', clearGrid);
+
 </script>
 </body>
 </html>
