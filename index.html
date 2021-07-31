@@ -17,7 +17,6 @@
 <script>
     const container = document.querySelector(".container");
 
-
     function drawGrid(x) {
         for (let i = 0; i < x; i++) {
 
@@ -40,7 +39,6 @@
 
     function clearGrid() {
         console.log("Grid cleared.");
-        const container = document.querySelector(".container");
         console.log(container);
         while (container.firstChild) {
             container.removeChild(container.lastChild);
